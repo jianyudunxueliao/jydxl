@@ -21,8 +21,10 @@ const routes = [
   }
 ]
 
+// Vite 会把构建时的 base 注入为 import.meta.env.BASE_URL
+// 本地开发默认 '/'，gh-pages 部署时是 '/jydxl/'
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior() {
     return { top: 0 }
